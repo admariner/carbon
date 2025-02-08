@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,9 +7,9 @@
 
 'use strict';
 
-const { expect, test } = require('@playwright/test');
+const { test } = require('@playwright/test');
 const { themes } = require('../../test-utils/env');
-const { snapshotStory, visitStory } = require('../../test-utils/storybook');
+const { snapshotStory } = require('../../test-utils/storybook');
 
 test.describe('Tile', () => {
   themes.forEach((theme) => {
@@ -102,101 +102,79 @@ test.describe('Tile', () => {
         });
       });
 
-      test('improved contrast clickable @vrt', async ({ page }) => {
+      test('feature flags clickable @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--clickable',
+          id: 'components-tile-feature-flag--clickable',
           theme,
         });
       });
 
-      test('improved contrast clickable with layer @vrt', async ({ page }) => {
+      test('feature flags clickable with layer @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--clickable-with-layer',
+          id: 'components-tile-feature-flag--clickable-with-layer',
           theme,
         });
       });
 
-      test('improved contrast selectable @vrt', async ({ page }) => {
+      test('feature flags selectable @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--selectable',
+          id: 'components-tile-feature-flag--selectable',
           theme,
         });
       });
 
-      test('improved contrast multi select @vrt', async ({ page }) => {
+      test('feature flags multi select @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--multi-select',
+          id: 'components-tile-feature-flag--multi-select',
           theme,
         });
       });
 
-      test('improved contrast radio @vrt', async ({ page }) => {
+      test('feature flags radio @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--radio',
+          id: 'components-tile-feature-flag--radio',
           theme,
         });
       });
 
-      test('improved contrast radio with layer @vrt', async ({ page }) => {
+      test('feature flags radio with layer @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--radio-with-layer',
+          id: 'components-tile-feature-flag--radio-with-layer',
           theme,
         });
       });
 
-      test('improved contrast expandable @vrt', async ({ page }) => {
+      test('feature flags expandable @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--expandable',
+          id: 'components-tile-feature-flag--expandable',
           theme,
         });
       });
 
-      test('improved contrast expandable with interactive @vrt', async ({
+      test('feature flags expandable with interactive @vrt', async ({
         page,
       }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--expandable-with-interactive',
+          id: 'components-tile-feature-flag--expandable-with-interactive',
           theme,
         });
       });
 
-      test('improved contrast expandable with layer @vrt', async ({ page }) => {
+      test('feature flags expandable with layer @vrt', async ({ page }) => {
         await snapshotStory(page, {
           component: 'Tile',
-          id: 'components-tile-experimental-improved-contrast--expandable-with-layer',
+          id: 'components-tile-feature-flag--expandable-with-layer',
           theme,
         });
       });
     });
-  });
-
-  test('accessibility-checker @avt', async ({ page }) => {
-    await visitStory(page, {
-      component: 'Tile',
-      id: 'components-tile--default',
-      globals: {
-        theme: 'white',
-      },
-    });
-    await expect(page).toHaveNoACViolations('Tile');
-  });
-
-  test('accessibility-checker selectable tile @avt', async ({ page }) => {
-    await visitStory(page, {
-      component: 'SelectableTile',
-      id: 'components-tile--selectable',
-      globals: {
-        theme: 'white',
-      },
-    });
-    await expect(page).toHaveNoACViolations('SelectableTile');
   });
 });

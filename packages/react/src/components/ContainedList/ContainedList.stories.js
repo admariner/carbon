@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { action } from '@storybook/addon-actions';
 import {
@@ -13,14 +13,14 @@ import {
   Apple,
   Fish,
   Strawberry,
-  SubtractAlt,
+  Close,
   Wheat,
 } from '@carbon/icons-react';
 
-import { Layer } from '../Layer';
-import { VStack } from '../Stack';
+import { WithLayer } from '../../../.storybook/templates/WithLayer';
+
 import Button from '../Button';
-import ExpandableSearch from '../ExpandableSearch';
+import Search from '../Search';
 import OverflowMenu from '../OverflowMenu';
 import OverflowMenuItem from '../OverflowMenuItem';
 import Tag from '../Tag';
@@ -30,6 +30,7 @@ import { usePrefix } from '../../internal/usePrefix';
 import mdx from './ContainedList.mdx';
 
 import ContainedList, { ContainedListItem } from '.';
+import ExpandableSearch from '../ExpandableSearch';
 
 export default {
   title: 'Components/ContainedList',
@@ -59,22 +60,25 @@ export default {
   },
 };
 
-export const Default = () => (
+const DefaultStory = (args) => (
   <>
-    <ContainedList label="List title" kind="on-page">
-      <ContainedListItem>List item</ContainedListItem>
-      <ContainedListItem>List item</ContainedListItem>
-      <ContainedListItem>List item</ContainedListItem>
-      <ContainedListItem>List item</ContainedListItem>
-    </ContainedList>
-    <ContainedList label="List title" kind="on-page">
-      <ContainedListItem>List item</ContainedListItem>
-      <ContainedListItem>List item</ContainedListItem>
-      <ContainedListItem>List item</ContainedListItem>
-      <ContainedListItem>List item</ContainedListItem>
-    </ContainedList>
+    {[...Array(4)].map((_, i) => (
+      <ContainedList key={i} {...args}>
+        {[...Array(8)].map((_, j) => (
+          <ContainedListItem key={`${i}-${j}`}>List item</ContainedListItem>
+        ))}
+      </ContainedList>
+    ))}
   </>
 );
+
+export const Default = DefaultStory.bind({});
+
+Default.args = {
+  label: 'List title',
+  kind: 'on-page',
+  size: 'lg',
+};
 
 export const Disclosed = () => (
   <>
@@ -114,21 +118,99 @@ export const WithActions = () => {
       kind="ghost"
       iconDescription="Dismiss"
       hasIconOnly
-      renderIcon={SubtractAlt}
+      renderIcon={Close}
+      aria-label="Dismiss"
     />
   );
 
   return (
-    <ContainedList
-      label="List title"
-      kind="on-page"
-      action={<ExpandableSearch placeholder="Find item" size="lg" />}>
+    <ContainedList label="List title" kind="on-page" action={''}>
       <ContainedListItem action={itemAction}>List item</ContainedListItem>
       <ContainedListItem action={itemAction} disabled>
         List item
       </ContainedListItem>
       <ContainedListItem action={itemAction}>List item</ContainedListItem>
       <ContainedListItem action={itemAction}>List item</ContainedListItem>
+    </ContainedList>
+  );
+};
+
+export const WithExpandableSearch = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchResults, setSearchResults] = React.useState([]);
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  React.useEffect(() => {
+    const listItems = [
+      'List item 1',
+      'List item 2',
+      'List item 3',
+      'List item 4',
+    ];
+
+    const results = listItems.filter((listItem) =>
+      listItem.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  return (
+    <ContainedList
+      label="List title"
+      kind="on-page"
+      action={
+        <ExpandableSearch
+          placeholder="Filter"
+          labelText="Search"
+          value={searchTerm}
+          onChange={handleChange}
+          closeButtonLabelText="Clear search input"
+          size="lg"
+        />
+      }>
+      {searchResults.map((listItem, key) => (
+        <ContainedListItem key={key}>{listItem}</ContainedListItem>
+      ))}
+    </ContainedList>
+  );
+};
+
+export const WithPersistentSearch = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchResults, setSearchResults] = React.useState([]);
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  React.useEffect(() => {
+    const listItems = [
+      'List item 1',
+      'List item 2',
+      'List item 3',
+      'List item 4',
+    ];
+
+    const results = listItems.filter((listItem) =>
+      listItem.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  return (
+    <ContainedList label="List title" kind="on-page" action={''}>
+      <Search
+        placeholder="Filter"
+        value={searchTerm}
+        onChange={handleChange}
+        closeButtonLabelText="Clear search input"
+        size="lg"
+        labelText="Filter search"
+      />
+      {searchResults.map((listItem, key) => (
+        <ContainedListItem key={key}>{listItem}</ContainedListItem>
+      ))}
     </ContainedList>
   );
 };
@@ -140,15 +222,13 @@ export const WithInteractiveItemsAndActions = () => {
       kind="ghost"
       iconDescription="Dismiss"
       hasIconOnly
-      renderIcon={SubtractAlt}
+      renderIcon={Close}
+      aria-label="Dismiss"
     />
   );
 
   return (
-    <ContainedList
-      label="List title"
-      kind="on-page"
-      action={<ExpandableSearch placeholder="Find item" size="lg" />}>
+    <ContainedList label="List title" kind="on-page" action={''}>
       <ContainedListItem action={itemAction} onClick={onClick}>
         List item
       </ContainedListItem>
@@ -175,7 +255,9 @@ export const WithListTitleDecorators = () => (
           justifyContent: 'space-between',
         }}>
         <span>List title</span>
-        <Tag size="sm">4</Tag>
+        <Tag size="sm" role="status" aria-label="4 items in list">
+          4
+        </Tag>
       </div>
     }
     kind="on-page">
@@ -195,27 +277,13 @@ export const WithIcons = () => (
   </ContainedList>
 );
 
-export const WithLayer = () => (
-  <VStack gap={5}>
+export const _WithLayer = () => (
+  <WithLayer>
     <ContainedList label="List title" kind="on-page">
       <ContainedListItem>List item</ContainedListItem>
       <ContainedListItem>List item</ContainedListItem>
     </ContainedList>
-    <Layer>
-      <VStack gap={5}>
-        <ContainedList label="List title" kind="on-page">
-          <ContainedListItem>List item</ContainedListItem>
-          <ContainedListItem>List item</ContainedListItem>
-        </ContainedList>
-        <Layer>
-          <ContainedList label="List title" kind="on-page">
-            <ContainedListItem>List item</ContainedListItem>
-            <ContainedListItem>List item</ContainedListItem>
-          </ContainedList>
-        </Layer>
-      </VStack>
-    </Layer>
-  </VStack>
+  </WithLayer>
 );
 
 export const UsageExamples = () => {
@@ -286,30 +354,4 @@ export const UsageExamples = () => {
       </ContainedList>
     </>
   );
-};
-
-const PlaygroundStory = (args) => (
-  <>
-    {[...Array(4)].map((_, i) => (
-      <ContainedList key={i} {...args}>
-        {[...Array(8)].map((_, j) => (
-          <ContainedListItem key={`${i}-${j}`}>List item</ContainedListItem>
-        ))}
-      </ContainedList>
-    ))}
-  </>
-);
-
-export const Playground = PlaygroundStory.bind({});
-
-Playground.argTypes = {
-  label: {
-    defaultValue: 'List title',
-  },
-  kind: {
-    defaultValue: 'on-page',
-  },
-  size: {
-    defaultValue: 'lg',
-  },
 };

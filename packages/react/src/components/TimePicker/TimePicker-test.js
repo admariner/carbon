@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,7 +8,7 @@
 import React from 'react';
 import { default as TimePicker } from './TimePicker';
 import SelectItem from '../SelectItem';
-import TimePickerSelect from '../TimePickerSelect/TimePickerSelect.js';
+import TimePickerSelect from '../TimePickerSelect/TimePickerSelect.tsx';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -31,7 +31,7 @@ describe('TimePicker', () => {
 
     it('should set value as expected', () => {
       render(<TimePicker id="time-picker" value="🐶" />);
-      expect(screen.getByRole('textbox')).toHaveAttribute('value', '🐶');
+      expect(screen.getByRole('textbox')).toHaveValue('🐶');
     });
 
     it('should set disabled as expected', () => {
@@ -41,7 +41,7 @@ describe('TimePicker', () => {
       expect(onClick).not.toHaveBeenCalled();
     });
 
-    it('should behave readonly as expected', () => {
+    it('should behave readonly as expected', async () => {
       const onClick = jest.fn();
       const onChange = jest.fn();
 
@@ -63,11 +63,11 @@ describe('TimePicker', () => {
       );
 
       const input = screen.getByRole('textbox');
-      userEvent.click(input);
+      await userEvent.click(input);
       expect(onClick).toHaveBeenCalled();
       expect(input).toHaveAttribute('readonly');
 
-      userEvent.type(input, '01:50');
+      await userEvent.type(input, '01:50');
       expect(onChange).not.toHaveBeenCalled();
 
       screen.getByDisplayValue('AM');
@@ -90,6 +90,39 @@ describe('TimePicker', () => {
       render(<TimePicker id="time-picker" placeholder="🧸" />);
       expect(screen.getByPlaceholderText('🧸')).toBeInTheDocument();
     });
+
+    it('should call onBlur when not disabled or readOnly', () => {
+      const onBlur = jest.fn();
+      render(<TimePicker id="time-picker" onBlur={onBlur} />);
+      const input = screen.getByRole('textbox');
+
+      fireEvent.blur(input);
+      expect(onBlur).toHaveBeenCalled();
+    });
+
+    it('should not call onBlur when disabled', () => {
+      const onBlur = jest.fn();
+      render(<TimePicker id="time-picker" onBlur={onBlur} disabled />);
+      const input = screen.getByRole('textbox');
+
+      fireEvent.blur(input);
+      expect(onBlur).not.toHaveBeenCalled();
+    });
+
+    it('should update value and prevValue when value changes', () => {
+      const { rerender } = render(
+        <TimePicker id="time-picker" value="10:00" />
+      );
+
+      // Initial render
+      expect(screen.getByRole('textbox')).toHaveValue('10:00');
+
+      // Rerender with a new value
+      rerender(<TimePicker id="time-picker" value="11:00" />);
+
+      // Check if the value is updated
+      expect(screen.getByRole('textbox')).toHaveValue('11:00');
+    });
   });
 
   describe('label', () => {
@@ -105,9 +138,9 @@ describe('TimePicker', () => {
   });
 
   describe('events', () => {
-    it('should write text inside the textbox', () => {
+    it('should write text inside the textbox', async () => {
       render(<TimePicker id="time-picker" />);
-      userEvent.type(screen.getByRole('textbox'), '🧛');
+      await userEvent.type(screen.getByRole('textbox'), '🧛');
       expect(screen.getByRole('textbox')).toHaveValue('🧛');
     });
   });

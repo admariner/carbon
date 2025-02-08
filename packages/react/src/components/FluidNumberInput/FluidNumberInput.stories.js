@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -16,7 +16,7 @@ import {
 import { Information } from '@carbon/icons-react';
 
 export default {
-  title: 'Experimental/unstable__FluidNumberInput',
+  title: 'Experimental/Fluid Components/unstable__FluidNumberInput',
   component: FluidNumberInput,
   subcomponents: {
     FluidNumberInputSkeleton,
@@ -37,45 +37,70 @@ const ToggleTip = (
   </>
 );
 
-export const Default = () => (
-  <div style={{ width: '400px' }}>
-    <FluidNumberInput
-      label={ToggleTip}
-      placeholder="Placeholder text"
-      id="input-default"
-      step={10}
-      min={0}
-      max={100}
-      defaultValue={50}
-    />
-    <br />
-    <br />
-    <FluidNumberInput
-      label={ToggleTip}
-      placeholder="Placeholder text"
-      id="input-invalid"
-      step={10}
-      min={0}
-      max={100}
-      defaultValue={50}
-      invalid
-      invalidText="Warning message that is really long can wrap to more lines but should not be excessively long."
-    />
-    <br />
-    <br />
-    <FluidNumberInput
-      label={ToggleTip}
-      placeholder="Placeholder text"
-      id="input-warning"
-      step={10}
-      min={0}
-      max={100}
-      defaultValue={50}
-      warn
-      warnText="Warning message that is really long can wrap to more lines but should not be excessively long."
-    />
+export const Default = (args) => (
+  <div style={{ width: args.defaultWidth }}>
+    <FluidNumberInput {...args} />
   </div>
 );
+
+Default.args = {
+  max: 100,
+  min: 0,
+  step: 10,
+  id: 'input-default',
+  placeholder: 'Placeholder text',
+  defaultWidth: 400,
+  defaultValue: 50,
+  invalid: false,
+  invalidText:
+    'Error message that is really long can wrap to more lines but should not be excessively long.',
+  disabled: false,
+  label: ToggleTip,
+  warn: false,
+  warnText:
+    'Warning message that is really long can wrap to more lines but should not be excessively long.',
+};
+
+Default.argTypes = {
+  defaultWidth: {
+    control: { type: 'range', min: 300, max: 800, step: 50 },
+  },
+  defaultValue: {
+    control: {
+      type: 'number',
+    },
+  },
+  invalid: {
+    control: {
+      type: 'boolean',
+    },
+  },
+  invalidText: {
+    control: {
+      type: 'text',
+    },
+  },
+  disabled: {
+    control: {
+      type: 'boolean',
+    },
+  },
+  label: {
+    control: {
+      type: 'text',
+    },
+  },
+  warn: {
+    control: {
+      type: 'boolean',
+    },
+  },
+  warnText: {
+    control: {
+      type: 'text',
+    },
+  },
+};
 
 export const Skeleton = () => (
   <div style={{ width: '400px' }}>
@@ -86,60 +111,3 @@ export const Skeleton = () => (
     />
   </div>
 );
-
-export const Playground = (args) => (
-  <div style={{ width: args.playgroundWidth }}>
-    <FluidNumberInput {...args} />
-  </div>
-);
-
-Playground.argTypes = {
-  playgroundWidth: {
-    control: { type: 'range', min: 300, max: 800, step: 50 },
-    defaultValue: 400,
-  },
-  defaultValue: {
-    control: {
-      type: 'number',
-    },
-    defaultValue: 50,
-  },
-  invalid: {
-    control: {
-      type: 'boolean',
-    },
-    defaultValue: false,
-  },
-  invalidText: {
-    control: {
-      type: 'text',
-    },
-    defaultValue:
-      'Error message that is really long can wrap to more lines but should not be excessively long.',
-  },
-  disabled: {
-    control: {
-      type: 'boolean',
-    },
-    defaultValue: false,
-  },
-  label: {
-    control: {
-      type: 'text',
-    },
-    defaultValue: 'Label',
-  },
-  warn: {
-    control: {
-      type: 'boolean',
-    },
-    defaultValue: false,
-  },
-  warnText: {
-    control: {
-      type: 'text',
-    },
-    defaultValue:
-      'Warning message that is really long can wrap to more lines but should not be excessively long.',
-  },
-};

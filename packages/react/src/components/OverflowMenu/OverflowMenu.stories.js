@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -24,8 +24,17 @@ export default {
   },
 };
 
-export const Default = () => (
-  <OverflowMenu ariaLabel="overflow-menu">
+export const RenderCustomIcon = () => {
+  return (
+    <OverflowMenu flipped={document?.dir === 'rtl'} renderIcon={Filter}>
+      <OverflowMenuItem itemText="Filter A" />
+      <OverflowMenuItem itemText="Filter B" />
+    </OverflowMenu>
+  );
+};
+
+export const Default = (args) => (
+  <OverflowMenu aria-label="overflow-menu" {...args}>
     <OverflowMenuItem itemText="Stop app" />
     <OverflowMenuItem itemText="Restart app" />
     <OverflowMenuItem itemText="Rename app" />
@@ -35,25 +44,13 @@ export const Default = () => (
   </OverflowMenu>
 );
 
-export const RenderCustomIcon = () => (
-  <OverflowMenu renderIcon={Filter}>
-    <OverflowMenuItem itemText="Filter A" />
-    <OverflowMenuItem itemText="Filter B" />
-  </OverflowMenu>
-);
+Default.args = {
+  flipped: document?.dir === 'rtl',
+  focusTrap: false,
+  open: false,
+};
 
-export const Playground = (args) => (
-  <OverflowMenu ariaLabel="overflow-menu" {...args}>
-    <OverflowMenuItem itemText="Stop app" />
-    <OverflowMenuItem itemText="Restart app" />
-    <OverflowMenuItem itemText="Rename app" />
-    <OverflowMenuItem itemText="Clone and move app" disabled requireTitle />
-    <OverflowMenuItem itemText="Edit routes and access" requireTitle />
-    <OverflowMenuItem hasDivider isDelete itemText="Delete app" />
-  </OverflowMenu>
-);
-
-Playground.argTypes = {
+Default.argTypes = {
   ariaLabel: {
     table: {
       disable: true,
@@ -78,13 +75,11 @@ Playground.argTypes = {
     control: {
       type: 'boolean',
     },
-    defaultValue: false,
   },
   focusTrap: {
     control: {
       type: 'boolean',
     },
-    defaultValue: false,
   },
   iconClass: {
     table: {
@@ -123,7 +118,6 @@ Playground.argTypes = {
     control: {
       type: 'boolean',
     },
-    defaultValue: false,
   },
   renderIcon: {
     table: {

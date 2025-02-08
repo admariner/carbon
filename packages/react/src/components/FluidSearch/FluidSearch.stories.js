@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -9,24 +9,12 @@ import React from 'react';
 import { FluidSearch, FluidSearchSkeleton } from '.';
 
 export default {
-  title: 'Experimental/unstable__FluidSearch',
+  title: 'Experimental/Fluid Components/unstable__FluidSearch',
   component: FluidSearch,
   subcomponents: {
     FluidSearchSkeleton,
   },
 };
-
-export const Default = () => (
-  <div style={{ width: '400px' }}>
-    <FluidSearch
-      size="lg"
-      labelText="Search"
-      closeButtonLabelText="Clear search input"
-      id="fluid-search-1"
-      placeholder="Prompt text"
-    />
-  </div>
-);
 
 export const Skeleton = () => (
   <div style={{ width: '400px' }}>
@@ -34,16 +22,23 @@ export const Skeleton = () => (
   </div>
 );
 
-export const Playground = (args) => (
-  <div style={{ width: args.playgroundWidth }}>
+export const Default = (args) => (
+  <div style={{ width: args.defaultWidth }}>
     <FluidSearch {...args} />
   </div>
 );
 
-Playground.argTypes = {
-  playgroundWidth: {
+Default.args = {
+  defaultWidth: 400,
+  closeButtonLabelText: 'Clear search input',
+  disabled: false,
+  labelText: 'Search',
+  placeholder: 'Prompt text',
+};
+
+Default.argTypes = {
+  defaultWidth: {
     control: { type: 'range', min: 300, max: 800, step: 50 },
-    defaultValue: 400,
   },
   className: {
     table: {
@@ -54,13 +49,11 @@ Playground.argTypes = {
     control: {
       type: 'text',
     },
-    defaultValue: 'Clear search input',
   },
   disabled: {
     control: {
       type: 'boolean',
     },
-    defaultValue: false,
   },
   id: {
     table: {
@@ -76,12 +69,10 @@ Playground.argTypes = {
     control: {
       type: 'text',
     },
-    defaultValue: 'Search',
   },
   placeholder: {
     control: {
       type: 'text',
     },
-    defaultValue: 'Prompt text',
   },
 };

@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,10 +7,11 @@
 
 import './story.scss';
 
-import { Information } from '@carbon/icons-react';
-import React from 'react';
+import { Help } from '@carbon/icons-react';
+import React, { useRef, useEffect } from 'react';
 import { Tooltip } from './';
 import mdx from './Tooltip.mdx';
+import Button from '../Button';
 
 export default {
   title: 'Components/Tooltip',
@@ -37,69 +38,33 @@ export default {
     },
   },
   decorators: [
-    (Story) => (
-      <div className="sb-tooltip-story">
-        <Story />
-      </div>
-    ),
+    (Story, context) => {
+      if (context.name.toLowerCase().includes('auto align')) {
+        return <Story />;
+      }
+      return (
+        <div className="sb-tooltip-story">
+          <Story />
+        </div>
+      );
+    },
   ],
 };
 
 export const Default = () => {
   const label =
-    'Occassionally, services are updated in a specified time window to ensure no down time for customers.';
+    'Occasionally, services are updated in a specified time window to ensure no down time for customers.';
   return (
-    <Tooltip align="bottom" label={label}>
+    <Tooltip align="bottom" label={label} closeOnActivation={false}>
       <button className="sb-tooltip-trigger" type="button">
-        <Information />
+        <Help />
       </button>
     </Tooltip>
   );
 };
 
-export const Alignment = () => {
-  return (
-    <Tooltip label="Tooltip alignment" align="bottom-left">
-      <button className="sb-tooltip-trigger" type="button">
-        <Information />
-      </button>
-    </Tooltip>
-  );
-};
-
-export const Duration = () => {
-  return (
-    <Tooltip label="Label one" enterDelayMs={0} leaveDelayMs={300}>
-      <button className="sb-tooltip-trigger" type="button">
-        <Information />
-      </button>
-    </Tooltip>
-  );
-};
-
-const PlaygroundStory = (props) => {
-  const { align, defaultOpen, description, enterDelayMs, label, leaveDelayMs } =
-    props;
-  return (
-    <Tooltip
-      align={align}
-      defaultOpen={defaultOpen}
-      description={description}
-      enterDelayMs={enterDelayMs}
-      label={label}
-      leaveDelayMs={leaveDelayMs}>
-      <button className="sb-tooltip-trigger" type="button">
-        <Information />
-      </button>
-    </Tooltip>
-  );
-};
-
-export const Playground = PlaygroundStory.bind({});
-
-Playground.argTypes = {
+Default.argTypes = {
   align: {
-    defaultValue: 'bottom',
     options: [
       'top',
       'top-left',
@@ -121,18 +86,54 @@ Playground.argTypes = {
       type: 'select',
     },
   },
-  defaultOpen: {
-    defaultValue: true,
-  },
   label: {
     control: {
       type: 'text',
     },
-    defaultValue: 'Custom label',
   },
   description: {
     control: {
       type: 'text',
     },
   },
+};
+
+export const Alignment = () => {
+  return (
+    <Tooltip label="Tooltip alignment" align="bottom-left">
+      <Button>This button has a tooltip</Button>
+    </Tooltip>
+  );
+};
+
+export const ExperimentalAutoAlign = () => {
+  const ref = useRef();
+  const tooltipLabel =
+    'Scroll the container up, down, left or right to observe how the tooltip will automatically change its position in attempt to stay within the viewport. This works on initial render in addition to on scroll.';
+
+  useEffect(() => {
+    ref?.current?.scrollIntoView({ block: 'center', inline: 'center' });
+  });
+  return (
+    <div style={{ width: '5000px', height: '5000px' }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: '2500px',
+          left: '2500px',
+        }}>
+        <Tooltip label={tooltipLabel} align="top" autoAlign>
+          <Button ref={ref}>This button has a tooltip</Button>
+        </Tooltip>
+      </div>
+    </div>
+  );
+};
+
+export const Duration = () => {
+  return (
+    <Tooltip label="Label one" enterDelayMs={0} leaveDelayMs={300}>
+      <Button>This button has a tooltip</Button>
+    </Tooltip>
+  );
 };

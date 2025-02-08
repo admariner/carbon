@@ -19,7 +19,7 @@ import {
 import { Information } from '@carbon/icons-react';
 
 export default {
-  title: 'Experimental/unstable__FluidTimePicker',
+  title: 'Experimental/Fluid Components/unstable__FluidTimePicker',
   component: FluidTimePicker,
   subcomponents: {
     FluidTimePickerSelect,
@@ -41,101 +41,6 @@ const ToggleTip = (
   </>
 );
 
-export const Default = () => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <div style={{ width: '350px' }}>
-      <FluidTimePicker id="time-picker-1" labelText="Time" placeholder="hh:mm">
-        <FluidTimePickerSelect id="select-1" labelText={ToggleTip}>
-          <SelectItem value="am" text="AM" />
-          <SelectItem value="pm" text="PM" />
-        </FluidTimePickerSelect>
-        <FluidTimePickerSelect id="select-2" labelText="Timezone">
-          <SelectItem value="et" text="Eastern Time (ET)" />
-          <SelectItem value="ct" text="Central Time (CT)" />
-          <SelectItem value="mt" text="Mountain Time (MT)" />
-          <SelectItem value="pt" text="Pacific Time (PT)" />
-        </FluidTimePickerSelect>
-      </FluidTimePicker>
-      <br />
-      <br />
-      <FluidTimePicker id="time-picker-2" labelText="Time" placeholder="hh:mm">
-        <FluidTimePickerSelect id="select-3" labelText={ToggleTip}>
-          <SelectItem value="am" text="AM" />
-          <SelectItem value="pm" text="PM" />
-        </FluidTimePickerSelect>
-      </FluidTimePicker>
-    </div>
-    <br />
-    <br />
-    <div style={{ width: '350px' }}>
-      <FluidTimePicker
-        id="time-picker-3"
-        labelText="Time"
-        placeholder="hh:mm"
-        invalid
-        invalidText="Error message goes here">
-        <FluidTimePickerSelect id="select-56" labelText={ToggleTip}>
-          <SelectItem value="am" text="AM" />
-          <SelectItem value="pm" text="PM" />
-        </FluidTimePickerSelect>
-        <FluidTimePickerSelect id="select-32" labelText="Timezone">
-          <SelectItem value="et" text="Eastern Time (ET)" />
-          <SelectItem value="ct" text="Central Time (CT)" />
-          <SelectItem value="mt" text="Mountain Time (MT)" />
-          <SelectItem value="pt" text="Pacific Time (PT)" />
-        </FluidTimePickerSelect>
-      </FluidTimePicker>
-      <br />
-      <br />
-      <FluidTimePicker
-        id="time-picker-2322"
-        labelText="Time"
-        placeholder="hh:mm"
-        invalid
-        invalidText="Error message goes here">
-        <FluidTimePickerSelect id="select-354" labelText={ToggleTip}>
-          <SelectItem value="am" text="AM" />
-          <SelectItem value="pm" text="PM" />
-        </FluidTimePickerSelect>
-      </FluidTimePicker>
-    </div>
-    <br />
-    <br />
-    <div style={{ width: '350px' }}>
-      <FluidTimePicker
-        id="time-picker-4454"
-        labelText="Time"
-        placeholder="hh:mm"
-        warn
-        warnText="Warning message goes here">
-        <FluidTimePickerSelect id="select-6533" labelText={ToggleTip}>
-          <SelectItem value="am" text="AM" />
-          <SelectItem value="pm" text="PM" />
-        </FluidTimePickerSelect>
-        <FluidTimePickerSelect id="select-232343" labelText="Timezone">
-          <SelectItem value="et" text="Eastern Time (ET)" />
-          <SelectItem value="ct" text="Central Time (CT)" />
-          <SelectItem value="mt" text="Mountain Time (MT)" />
-          <SelectItem value="pt" text="Pacific Time (PT)" />
-        </FluidTimePickerSelect>
-      </FluidTimePicker>
-      <br />
-      <br />
-      <FluidTimePicker
-        id="time-picker-22213"
-        labelText="Time"
-        placeholder="hh:mm"
-        warn
-        warnText="Warning message goes here">
-        <FluidTimePickerSelect id="select-34354" labelText={ToggleTip}>
-          <SelectItem value="am" text="AM" />
-          <SelectItem value="pm" text="PM" />
-        </FluidTimePickerSelect>
-      </FluidTimePicker>
-    </div>
-  </div>
-);
-
 export const Skeleton = () => (
   <div style={{ width: '300px' }}>
     <FluidTimePickerSkeleton />
@@ -145,7 +50,7 @@ export const Skeleton = () => (
   </div>
 );
 
-export const Playground = (args) => {
+export const Default = (args) => {
   return (
     <div style={{ width: '350px' }}>
       <FluidTimePicker id="time-picker-1" {...args}>
@@ -176,7 +81,16 @@ export const Playground = (args) => {
   );
 };
 
-Playground.argTypes = {
+Default.args = {
+  labelText: 'Time',
+  invalidText:
+    'Error message that is really long can wrap to more lines but should not be excessively long.',
+  placeholder: 'hh:mm',
+  warnText:
+    'Warning message that is really long can wrap to more lines but should not be excessively long.',
+};
+
+Default.argTypes = {
   children: {
     table: {
       disable: true,
@@ -192,26 +106,20 @@ Playground.argTypes = {
   },
   labelText: {
     control: { type: 'string' },
-    defaultValue: 'Time',
   },
   invalid: {
     control: { type: 'boolean' },
   },
   invalidText: {
     control: { type: 'text' },
-    defaultValue:
-      'Error message that is really long can wrap to more lines but should not be excessively long.',
   },
   placeholder: {
     control: { type: 'text' },
-    defaultValue: 'hh:mm',
   },
   warn: {
     control: { type: 'boolean' },
   },
   warnText: {
     control: { type: 'text' },
-    defaultValue:
-      'Warning message that is really long can wrap to more lines but should not be excessively long.',
   },
 };

@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018, 2022
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -25,10 +25,10 @@ describe('TextArea', () => {
     });
 
     it('should support a custom `className` prop on the outermost element', () => {
-      render(
+      const { container } = render(
         <TextArea className="custom-class" id="testing" labelText="testLabel" />
       );
-      expect(screen.getByLabelText('testLabel')).toHaveClass('custom-class');
+      expect(container.firstChild).toHaveClass('custom-class');
     });
 
     it('should have default cols settings as expected', () => {
@@ -55,14 +55,12 @@ describe('TextArea', () => {
 
     it('should not be disabled by default', () => {
       render(<TextArea id="testing" labelText="testLabel" />);
-      expect(screen.getByLabelText('testLabel')).not.toHaveAttribute(
-        'disabled'
-      );
+      expect(screen.getByLabelText('testLabel')).toBeEnabled();
     });
 
     it('should be disabled as expected', () => {
       render(<TextArea disabled id="testing" labelText="testLabel" />);
-      expect(screen.getByLabelText('testLabel')).toHaveAttribute('disabled');
+      expect(screen.getByLabelText('testLabel')).toBeDisabled();
     });
 
     it('should respect hideLabel prop', () => {
@@ -167,6 +165,7 @@ describe('TextArea', () => {
       );
       expect(screen.getByText('This is helper text.').tagName).toBe('SPAN');
       expect(
+        // eslint-disable-next-line testing-library/no-node-access
         screen.getByText('This is helper text.').parentElement
       ).toHaveClass(`${prefix}--form__helper-text`);
     });
@@ -193,7 +192,9 @@ describe('TextArea', () => {
       expect(
         screen
           .getByText('testLabel')
+          // eslint-disable-next-line testing-library/no-node-access
           .closest(`.${prefix}--text-area__label-wrapper`)
+          // eslint-disable-next-line testing-library/no-node-access
           .getElementsByClassName(`${prefix}--label`).length
       ).toEqual(1);
     });
@@ -206,33 +207,82 @@ describe('TextArea', () => {
       expect(
         screen
           .getByText('testLabel')
+          // eslint-disable-next-line testing-library/no-node-access
           .closest(`.${prefix}--text-area__label-wrapper`)
+          // eslint-disable-next-line testing-library/no-node-access
           .getElementsByClassName(`${prefix}--label`).length
       ).toEqual(1);
     });
 
-    it('should have label and counter disabled', () => {
+    describe('word counter', () => {
+      it('should not render element with only counterMode prop passed in', () => {
+        render(
+          <TextArea
+            id="wordCounterTestWrapper1"
+            labelText="testLabel"
+            counterMode={'word'}
+          />
+        );
+        expect(
+          // eslint-disable-next-line testing-library/no-node-access
+          screen.getByText('testLabel').closest(`${prefix}--text-area__counter`)
+        ).toEqual(null);
+      });
+    });
+  });
+
+  it('should have label and counter disabled', () => {
+    render(
+      <TextArea
+        disabled
+        enableCounter
+        id="testing"
+        labelText="testLabel"
+        maxCount={100}
+      />
+    );
+    expect(screen.getByText('testLabel')).toHaveClass(
+      `${prefix}--label--disabled`
+    );
+    expect(screen.getByText('0/100')).toHaveClass(`${prefix}--label--disabled`);
+  });
+});
+
+describe('events', () => {
+  describe('disabled textarea', () => {
+    it('should not invoke onClick when textarea is clicked', async () => {
+      const onClick = jest.fn();
       render(
         <TextArea
           disabled
-          enableCounter
           id="testing"
           labelText="testLabel"
-          maxCount={100}
+          onClick={onClick}
         />
       );
-      expect(screen.getByText('testLabel')).toHaveClass(
-        `${prefix}--label--disabled`
+      await userEvent.click(screen.getByLabelText('testLabel'));
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('should not invoke onChange', async () => {
+      const onChange = jest.fn();
+      render(
+        <TextArea
+          disabled
+          id="testing"
+          labelText="testLabel"
+          onChange={onChange}
+        />
       );
-      expect(screen.getByText('0/100')).toHaveClass(
-        `${prefix}--label--disabled`
-      );
+      await userEvent.click(screen.getByLabelText('testLabel'));
+      await userEvent.keyboard('big blue');
+      expect(onChange).not.toHaveBeenCalled();
     });
   });
 
   describe('events', () => {
     describe('disabled textarea', () => {
-      it('should not invoke onClick when textarea is clicked', () => {
+      it('should not invoke onClick when textarea is clicked', async () => {
         const onClick = jest.fn();
         render(
           <TextArea
@@ -242,11 +292,11 @@ describe('TextArea', () => {
             onClick={onClick}
           />
         );
-        userEvent.click(screen.getByLabelText('testLabel'));
+        await userEvent.click(screen.getByLabelText('testLabel'));
         expect(onClick).not.toHaveBeenCalled();
       });
 
-      it('should not invoke onChange', () => {
+      it('should not invoke onChange', async () => {
         const onChange = jest.fn();
         render(
           <TextArea
@@ -256,8 +306,8 @@ describe('TextArea', () => {
             onChange={onChange}
           />
         );
-        userEvent.click(screen.getByLabelText('testLabel'));
-        userEvent.keyboard('big blue');
+        await userEvent.click(screen.getByLabelText('testLabel'));
+        await userEvent.keyboard('big blue');
         expect(onChange).not.toHaveBeenCalled();
       });
     });
@@ -288,8 +338,22 @@ describe('TextArea', () => {
           />
         );
         await userEvent.click(screen.getByLabelText('testLabel'));
-        userEvent.keyboard('big blue');
+        await userEvent.keyboard('big blue');
         expect(onChange).toHaveBeenCalled();
+      });
+
+      it('should invoke onKeyDown when textarea is keyed', async () => {
+        const onKeyDown = jest.fn();
+        render(
+          <TextArea
+            disabled={false}
+            id="testing"
+            labelText="testLabel"
+            onKeyDown={onKeyDown}
+          />
+        );
+        await userEvent.type(screen.getByLabelText('testLabel'), 'test');
+        expect(onKeyDown).toHaveBeenCalled();
       });
     });
   });

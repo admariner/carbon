@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -22,11 +22,18 @@ export default {
   },
 };
 
-export const Default = () => <SkeletonText />;
+export const Default = (args) => {
+  return <SkeletonText {...args} />;
+};
 
-export const Playground = (args) => <SkeletonText {...args} />;
+Default.args = {
+  heading: false,
+  paragraph: false,
+  width: '100%',
+  lineCount: 3,
+};
 
-Playground.argTypes = {
+Default.argTypes = {
   className: {
     control: false,
   },
@@ -34,24 +41,20 @@ Playground.argTypes = {
     control: {
       type: 'boolean',
     },
-    defaultValue: false,
   },
   paragraph: {
     control: {
       type: 'boolean',
     },
-    defaultValue: false,
   },
   width: {
     control: {
       type: 'text',
     },
-    defaultValue: '100%',
   },
   lineCount: {
     control: {
       type: 'number',
     },
-    defaultValue: 3,
   },
 };

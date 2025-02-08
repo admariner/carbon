@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -23,37 +23,6 @@ export default {
   },
 };
 
-export const Default = () => (
-  <ProgressIndicator>
-    <ProgressStep
-      complete
-      label="First step"
-      description="Step 1: Getting started with Carbon Design System"
-      secondaryLabel="Optional label"
-    />
-    <ProgressStep
-      current
-      label="Second step with tooltip"
-      description="Step 2: Getting started with Carbon Design System"
-    />
-    <ProgressStep
-      label="Third step with tooltip"
-      description="Step 3: Getting started with Carbon Design System"
-    />
-    <ProgressStep
-      label="Fourth step"
-      description="Step 4: Getting started with Carbon Design System"
-      invalid
-      secondaryLabel="Example invalid step"
-    />
-    <ProgressStep
-      label="Fifth step"
-      description="Step 5: Getting started with Carbon Design System"
-      disabled
-    />
-  </ProgressIndicator>
-);
-
 export const Interactive = () => (
   <ProgressIndicator currentIndex={1} onChange={() => alert('Clicked')}>
     <ProgressStep
@@ -73,7 +42,7 @@ export const Interactive = () => (
 
 export const Skeleton = () => <ProgressIndicatorSkeleton />;
 
-export const Playground = (args) => (
+export const Default = (args) => (
   <ProgressIndicator {...args}>
     <ProgressStep
       complete
@@ -104,7 +73,13 @@ export const Playground = (args) => (
   </ProgressIndicator>
 );
 
-Playground.argTypes = {
+Default.args = {
+  currentIndex: 0,
+  spaceEqually: false,
+  vertical: false,
+};
+
+Default.argTypes = {
   children: {
     table: {
       disable: true,
@@ -122,14 +97,11 @@ Playground.argTypes = {
   },
   currentIndex: {
     control: { type: 'number' },
-    defaultValue: 0,
   },
   spaceEqually: {
     control: { type: 'boolean' },
-    defaultValue: false,
   },
   vertical: {
     control: { type: 'boolean' },
-    defaultValue: false,
   },
 };

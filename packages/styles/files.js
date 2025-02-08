@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -21,6 +21,7 @@ const files = [
   'scss/_config.scss',
   'scss/_feature-flags.scss',
   'scss/_layer.scss',
+  'scss/_layout.scss',
   'scss/_motion.scss',
   'scss/_reset.scss',
   'scss/_spacing.scss',
@@ -36,6 +37,8 @@ const files = [
   'scss/components/_index.scss',
   'scss/components/accordion/_accordion.scss',
   'scss/components/accordion/_index.scss',
+  'scss/components/ai-label/_ai-label.scss',
+  'scss/components/ai-label/_index.scss',
   'scss/components/aspect-ratio/_aspect-ratio.scss',
   'scss/components/aspect-ratio/_index.scss',
   'scss/components/breadcrumb/_breadcrumb.scss',
@@ -43,12 +46,16 @@ const files = [
   'scss/components/button/_button.scss',
   'scss/components/button/_index.scss',
   'scss/components/button/_tokens.scss',
+  'scss/components/chat-button/_chat-button.scss',
+  'scss/components/chat-button/_index.scss',
   'scss/components/checkbox/_checkbox.scss',
   'scss/components/checkbox/_index.scss',
   'scss/components/code-snippet/_code-snippet.scss',
   'scss/components/code-snippet/_index.scss',
   'scss/components/combo-box/_combo-box.scss',
   'scss/components/combo-box/_index.scss',
+  'scss/components/contained-list/_contained-list.scss',
+  'scss/components/contained-list/_index.scss',
   'scss/components/content-switcher/_content-switcher.scss',
   'scss/components/content-switcher/_index.scss',
   'scss/components/copy-button/_copy-button.scss',
@@ -93,6 +100,8 @@ const files = [
   'scss/components/fluid-text-input/_index.scss',
   'scss/components/fluid-time-picker/_fluid-time-picker.scss',
   'scss/components/fluid-time-picker/_index.scss',
+  'scss/components/icon-indicator/_icon-indicator.scss',
+  'scss/components/icon-indicator/_index.scss',
   'scss/components/inline-loading/_index.scss',
   'scss/components/inline-loading/_inline-loading.scss',
   'scss/components/link/_index.scss',
@@ -137,8 +146,11 @@ const files = [
   'scss/components/select/_select.scss',
   'scss/components/skeleton-styles/_index.scss',
   'scss/components/skeleton-styles/_skeleton-styles.scss',
+  'scss/components/skeleton-styles/_ai-skeleton-styles.scss',
   'scss/components/slider/_index.scss',
   'scss/components/slider/_slider.scss',
+  'scss/components/slug/_index.scss',
+  'scss/components/slug/_slug.scss',
   'scss/components/stack/_index.scss',
   'scss/components/stack/_stack.scss',
   'scss/components/structured-list/_index.scss',
@@ -200,6 +212,7 @@ const files = [
   'scss/type/_reset.scss',
 
   // Utilities
+  'scss/utilities/_ai-gradient.scss',
   'scss/utilities/_box-shadow.scss',
   'scss/utilities/_button-reset.scss',
   'scss/utilities/_component-reset.scss',
@@ -211,6 +224,7 @@ const files = [
   'scss/utilities/_high-contrast-mode.scss',
   'scss/utilities/_index.scss',
   'scss/utilities/_keyframes.scss',
+  'scss/utilities/_layout.scss',
   'scss/utilities/_placeholder-colors.scss',
   'scss/utilities/_rotate.scss',
   'scss/utilities/_skeleton.scss',

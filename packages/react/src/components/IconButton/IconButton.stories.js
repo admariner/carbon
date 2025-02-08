@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -36,15 +36,7 @@ export default {
   },
 };
 
-export const Default = () => (
-  <div style={{ margin: '3rem' }}>
-    <IconButton>
-      <Edit />
-    </IconButton>
-  </div>
-);
-
-const PlaygroundStory = (props) => {
+const DefaultStory = (props) => {
   const { align, defaultOpen, disabled, kind, label, size } = props;
   return (
     <div style={{ margin: '3rem' }}>
@@ -61,11 +53,18 @@ const PlaygroundStory = (props) => {
   );
 };
 
-export const Playground = PlaygroundStory.bind({});
+export const Default = DefaultStory.bind({});
 
-Playground.argTypes = {
+Default.args = {
+  align: 'bottom',
+  defaultOpen: true,
+  disabled: false,
+  label: 'Custom label',
+  kind: 'primary',
+};
+
+Default.argTypes = {
   align: {
-    defaultValue: 'bottom',
     options: [
       'top',
       'top-left',
@@ -80,11 +79,7 @@ Playground.argTypes = {
       type: 'select',
     },
   },
-  defaultOpen: {
-    defaultValue: true,
-  },
   disabled: {
-    defaultValue: false,
     control: {
       type: 'boolean',
     },
@@ -93,13 +88,11 @@ Playground.argTypes = {
     control: {
       type: 'text',
     },
-    defaultValue: 'Custom label',
   },
   kind: {
     control: {
       type: 'select',
     },
-    defaultValue: 'primary',
     options: ['primary', 'secondary', 'ghost', 'tertiary'],
   },
 };

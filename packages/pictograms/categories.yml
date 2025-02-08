@@ -3,6 +3,7 @@ categories:
     members:
       - cloud--download
       - cloud--upload
+      - coupon
       - crop
       - delete
       - do-not
@@ -12,19 +13,46 @@ categories:
       - embed
       - export--01
       - export--02
+      - flexible
       - launch
+      - link
       - love
       - maximize
       - minimize
+      - music
       - paper--clip
       - player--flow
       - refresh
       - renew
       - repeat
       - reset
+      - scalable
       - trash
       - upload--01
       - upload--02
+  - name: AI
+    members:
+      - ai-governance--lifecycle-factsheet
+      - ai-governance--model
+      - ai-governance--model-tuned
+      - ai-governance--prompt
+      - ai--ethics
+      - ai--explainability
+      - ai--privacy
+      - ai--robustness
+      - ai--transparency
+      - ai--trust
+      - decision-velocity
+      - ibm--granite
+      - intelligence
+      - machine--learning--01
+      - machine--learning--02
+      - machine--learning--03
+      - machine--learning--04
+      - machine--learning--05
+      - machine--learning--06
+      - machine--learning--model
+      - technical-owner
   - name: Blockchain
     members:
       - connected--ecosystem
@@ -34,7 +62,7 @@ categories:
       - transparency--01
       - transparency--02
       - trust
-  - name: Building Structure
+  - name: Building structure
     members:
       - alarm
       - apartment
@@ -48,6 +76,7 @@ categories:
       - fire--alarm
       - fire--extinguisher
       - id--badge
+      - intelligent-infrastructure
       - no--smoking
       - office
       - recycle--bin
@@ -73,7 +102,11 @@ categories:
       - berlin--cathedral
       - berlin--tower
       - boston--zakim-bridge
+      - bucharest--national-theatre
+      - bucharest--romanian-athenaeum
       - budapest
+      - budapest--corvin7
+      - budapest--hungarian-auto-club
       - budapest--lab-skyline
       - budapest--citadella
       - cairo--giza-plateau
@@ -89,9 +122,15 @@ categories:
       - dublin--brewery
       - dublin--castle
       - ecuador--quito
+      - ehningen--tech-campus-01
+      - ehningen--tech-campus-02
       - hamburg--philharmone
       - hong-kong--cityscape
       - hong-kong
+      - ibm--one-madison-avenue
+      - ibm--uk-labs-hursley
+      - japan--mt-fuji
+      - kochi-houseboat
       - kuala-lumpur
       - london
       - london--big-ben
@@ -113,26 +152,32 @@ categories:
       - nyc--statue-of-liberty
       - nyc--world-trade-center
       - okinawa
+      - osaka--tsutenkaku-tower
       - paris--arc-de-triomphe
       - paris--louvre
       - paris--notre-dame
       - paris--pompidou-center
       - peru--machu-picchu
       - portland--building
+      - poughkeepsie--bridge
       - prague--charles-bridge-tower
       - prague--dancing-house--01
       - prague--dancing-house--02
       - raleigh-nc
       - rio-de-janeiro
+      - romania--the-gate-of-the-kiss
       - rome
       - san-francisco
       - san-francisco--fog
       - sao-paulo
       - seattle
       - seoul--gyeongbokgung-palace
-      #    - shanghai
+      - shanghai--cityscape
+      - shanghai--oriental-pearl-tower
+      - shanghai--skyline
       - singapore
       - stockholm
+      - stuttgart--tv-tower
       - taipei--bubble-tea
       - tel-aviv
       - tokyo--cherry-blossom
@@ -144,32 +189,47 @@ categories:
       - uruguay--sol-de-mayo
       - venezuela--national-pantheon-of-venezuela
       - vancouver
+      - walldorf-ibm-innovation-studios
       - washington-dc
       - washington-dc--capitol
       - washington-dc--monument
+      - zurich
   - name: Cloud
     members:
       - accelerating-transformation
       - access-management
       - active--server
+      - ad-tech
       - agility
       - agility-with-hybrid-multicloud
       - ai--ready
       - ai
+      - analytics
+      - analyze--code
       - analyzing--containers
       - api
+      - api--lifecycle
+      - application--integration
+      - application--platform
+      - automation--software
       - apps
       - assessment-used
       - audio-data
       - audit-trail
       - automate--modular--management
       - automated
+      - back-up--and-restore
+      - balanced
+      - bare-metal
       - big-data
+      - blockchain--02
       - build-and-deploy-pipeline
+      - business--analytics
       - business--continuity--02
       - c--language
       - c-plus-plus--language
       - choose-how-to-get-started
+      - cloud
       - cloud--analytics
       - cloud--assets
       - cloud--builder--professional--services
@@ -177,11 +237,14 @@ categories:
       - cloud--data--services
       - cloud--ecosystem
       - cloud--guidelines
+      - cloud--integration
       - cloud--managed--services
+      - cloud--object-storage
       - cloud--oracle
       - cloud--partners
       - cloud--planning
       - cloud--platform
+      - cloud--private
       - cloud--sap
       - cloud--services
       - cloud--services--pricing
@@ -191,6 +254,7 @@ categories:
       - cloud--vmware
       - cloud-pak--family
       - cloud-pak--for-applications
+      - cloud-pak--for-business-automation
       - cloud-pak--for-data
       - cloud-pak--for-integration
       - cloud-pak--for-multicloud-management
@@ -202,6 +266,7 @@ categories:
       - cognos--analytics
       - collaborate-with-teams
       - compliant
+      - compute
       - condition--builder
       - connect--to-cloud
       - connected--devices
@@ -209,6 +274,7 @@ categories:
       - construct
       - connectivity
       - containers
+      - content-delivery-network
       - continuous
       - control
       - control-panel
@@ -217,26 +283,41 @@ categories:
       - custom--workloads
       - customizable
       - data--centers
+      - data--management
       - data--privacy--02
       - data--protection-data--security
+      - data--science
       - data--transfer
+      - data--warehousing
+      - database
+      - db2
+      - dedicated--host
+      - dedicated--instance
       - deep-learning
       - deploying-containers
       - deployment
+      - dev-and-test
       - developer-tools
       - devops
+      - devops--02
       - devops--toolchain
       - digital
+      - directlink
+      - disaster-recovery
       - docker
       - documentation
       - drag-and-drop-interface
       - dynamic-workloads
+      - e-commerce
       - ease-of-use
       - ecosystem
       - efficient
       - elements-of-the-cloud
       - encryption
+      - enterprise
+      - enterprise--messaging
       - event-driven
+      - event--streams--02
       - expand--horz
       - expand--vert
       - expansion
@@ -248,28 +329,47 @@ categories:
       - fault-tolerant
       - filter-and-group-data
       - filter--variable
+      - financial--services
       - flexibility--02
       - focus-on-code
       - forecasting
       - free--trial
       - fully-managed
+      - functions-as-a-service
       - geographic-flexibility
       - global--business--services
       - global--footprint
       - global--technology--services
       - go--language
+      - gpu-computing
+      - graphic-design
       - graphic-intensive-workloads
+      - healthcare
       - help-desk
       - high--performance
+      - high--performance--computing
+      - high--speed--data-transport
       - high-volume-data
       - highly-available
       - hybrid--cloud
+      - hybrid--cloud--03
       - hybrid--cloud--services
+      - hybrid--it-management
+      - hyper-protect
+      - hyper-protect--containers
+      - hyper-protect--crypto-service
+      - hyper-protect--database-as-a-service
+      - hyper-protect--virtual-servers
       - ibm--automation-platform
       - ibm--cloud
+      - ibm--z-and-cloud-modernization-stack
       - identify-and-access
       - identify-and-resolve-issues
+      - infrastructure-as-a-service
+      - insurance--02
       - integration--02
+      - integration--03
+      - internet-of-things
       - java
       - javascript
       - keep-your-own-key
@@ -277,15 +377,29 @@ categories:
       - lift-and-shift
       - list--bullet
       - list--checkbox
+      - load-balancer
       - lowering-risk
       - machine--learning--07
+      - managed-hosting--01
+      - managed-hosting--02
+      - management
       - managing--containers
       - marketplace
       - mas
+      - mass-data-migration
+      - media-and-entertainment
+      - memory
+      - micro
+      - microservices
+      - migration
+      - mobile
       - modernize
       - monitor
       - mqa
+      - network--02
+      - network--appliances
       - network--of-devices
+      - network--security
       - network--traffic
       - new-financial-customer-experiences
       - new-revenue-streams
@@ -301,51 +415,82 @@ categories:
       - pay-for-what-you-use
       - php--language
       - planning--analytics
+      - platform-as-a-service
       - pli--language
+      - power--on
       - predictability
       - predictive-analytics
+      - process--automation
       - productivity
       - proven-technology
+      - public
       - public-cloud-to-private-cloud
       - r--language
       - random--samples
       - react-to-data
       - real-time
+      - real-estate
       - redefining-financial-services
       - reducing-cost
+      - reference-architecture
       - reliability--02
+      - reseller-programs
       - resource-health
       - resources
+      - retail
       - rocket
       - saas--enablement
+      - saas--integration
+      - salesforce-integration
+      - sap
       - save-time
       - scale--02
       - scaling--containers
+      - scientific--computing
+      - scientific--research
+      - secure--devops
+      - secure--gateway
       - security--02
+      - security--groups
+      - security--management
+      - security--visibility
       - select--range
       - serverless
+      - serverless--02
       - sharing-data
       - single--sign-on
+      - slice-code
       - small-components-making-a-larger-whole
+      - small-to-medium-business-smb
       - softlayer--enablement
+      - software
+      - spss
       - start-for-free
+      - start-ups
+      - storage
       - streaming-data
       - streamline--operations
       - subsecond
       - support
+      - telecommunications
       - text--data
       - training
       - transform-data
       - troubleshooting
       - trusted
+      - united-governance
       - unstructured-data
       - use-the-language-of-your-choice
       - view-graphs-and-dashboard
+      - virtual
       - virtualization--02
       - visibility
       - visionary
       - visual--data
       - websites
+      - websphere
+      - white-paper
+      - windows-hosting
       - workflows
   - name: Controls
     members:
@@ -358,7 +503,7 @@ categories:
       - video--chat
       - video--play
       - webcast
-  - name: Data Analytics
+  - name: Data analytics
     members:
       - analyze
       - blockchain
@@ -390,6 +535,14 @@ categories:
       - chart--t-SNE
       - circle--packing
       - code--syntax
+      - curve--cubic
+      - curve--exponential
+      - curve--inverse
+      - curve--linear
+      - curve--logarithmic
+      - curve--logistic
+      - curve--power
+      - curve--quadratic
       - dashboard
       - data--apis
       - data--set
@@ -401,6 +554,7 @@ categories:
       - math--curve
       - population--diagram
       - q-q-plot
+      - quantum
       - rank
       - relationship--diagram
       - report
@@ -413,10 +567,12 @@ categories:
       - tree--map
       - user--analytics
       - word--cloud
-  - name: Data Storage
+  - name: Data storage
     members:
       - accelerated-computing
+      - app--modernization
       - archive
+      - asset-management
       - availability
       - business--continuity
       - cloud--infrastructure-management
@@ -441,6 +597,7 @@ categories:
       - ibm--z16--plus-cloud
       - infrastructure-security
       - it--infrastructure-software
+      - mainframe-qualities-of-service
       - reliability
       - resilience
       - sap--hana
@@ -448,7 +605,10 @@ categories:
       - server--rack
       - servers
       - storage--area-networks
+      - storage--for-data-and-ai
+      - storage--for-resiliency
       - storage--product
+      - storage--systems
       - tape--storage
       - virtualization
       - zero-trust
@@ -458,6 +618,7 @@ categories:
       - application
       - art--tools--01
       - birthday--cake
+      - code--explanation
       - content--design
       - cupcake
       - design-and-development--01
@@ -481,7 +642,7 @@ categories:
       - web--developer
       - wedding--cake
       - windows
-  - name: Device Interaction
+  - name: Device interaction
     members:
       - add--device
       - augmented--reality
@@ -513,9 +674,15 @@ categories:
       - college
       - education
       - feedback--02
+      - flag
       - goals
       - growth
+      - handshake
       - insights
+      - medal--01
+      - medal--02
+      - scan-code
+      - trophy
       - university
   - name: Electronics
     members:
@@ -549,6 +716,7 @@ categories:
       - rich--text--format
   - name: Finance
     members:
+      - banking
       - client--financing--01
       - client--financing--02
       - commercial--financing--01
@@ -577,6 +745,8 @@ categories:
     members:
       - capitol
       - fairness
+      - government--01
+      - government--02
       - justice
       - parliament
   - name: Healthcare
@@ -621,21 +791,30 @@ categories:
   - name: IBM
     members:
       - bee
+      - carbon
+      - carbon--for-cloud
+      - carbon--for-ibm-dotcom
+      - carbon--for-ibm-product
       - enterprise--design--thinking--01
       - enterprise--design--thinking--02
       - eye
+      - ibm--ibv
       - ibm--ix
       - ibm--z
+      - ibm--z-os-container-platform
       - ibm--z--partition
       - progress
       - world--community--grid
   - name: Industry
     members:
       - agriculture
+      - b2b-commerce
       - bulldozer
       - cargo--crane
       - cargo--ship
       - cheese
+      - construction-worker--mask
+      - construction-worker
       - farm--01
       - farm--02
       - farmer--01
@@ -672,23 +851,6 @@ categories:
       - iot--munich
       - solve
       - transform--01
-  - name: Learning
-    members:
-      - ai--ethics
-      - ai--explainability
-      - ai--privacy
-      - ai--robustness
-      - ai--transparency
-      - ai--trust
-      - decision-velocity
-      - intelligence
-      - machine--learning--01
-      - machine--learning--02
-      - machine--learning--03
-      - machine--learning--04
-      - machine--learning--05
-      - machine--learning--06
-      - technical-owner
   - name: Life Science
     members:
       - cell
@@ -709,25 +871,48 @@ categories:
     members:
       - apple
       - backpack
+      - balloon
+      - balloon--hot-air
       - blender
       - cafe
+      - candy
       - cherries
       - cookie
       - dining
       - hard--ice--cream
+      - firecracker
       - flower--01
       - flower--02
+      - football
+      - football--field
+      - football--goal-post
+      - golf--bag
+      - golf--ball
+      - golf--club
+      - golf--hole
+      - gramophone
       - guitar
       - juice
+      - lantern
+      - moon-cake
+      - ornament
       - perfume
       - racetrack
       - rock-on
       - scale
+      - snowflake
       - soft--ice--cream
       - sports
+      - spotlight
+      - stage
       - stationary--bicycle
       - tennis
+      - tennis--ball
+      - tennis--net
+      - tennis--racquet
       - tree
+      - waving-hand
+      - whistle
       - yoga--01
       - yoga--02
       - yoga--03
@@ -745,9 +930,11 @@ categories:
   - name: Manufacturing
     members:
       - delivery--truck
+      - emissions
       - factory
       - forklift
       - ibm--rpa
+      - pipeline
       - robot
       - robotics
       - tools
@@ -756,6 +943,10 @@ categories:
       - automation--decision
       - bluepages
       - distribution--ledger
+      - event--automation
+      - event--endpoint-management
+      - event--processing
+      - event--streams
       - global--network
       - integration
       - inspect--data
@@ -785,6 +976,7 @@ categories:
   - name: People
     members:
       - advocate
+      - advocate--mask
       - design-thinking-team
       - expand--user
       - face--dissatisfied
@@ -812,8 +1004,12 @@ categories:
       - team--alignment
       - teammates
       - user
+      - user--mask
       - user--profile
       - user--search
+  - name: Quantum
+    members:
+      - qiskit
   - name: Red Hat
     members:
       - build-applications-anywhere
@@ -854,6 +1050,7 @@ categories:
       - price
       - qr-code
       - receipt
+      - retail--sustainable
       - secure--search
       - select--product
       - shirt
@@ -917,6 +1114,7 @@ categories:
   - name: Strategy
     members:
       - innovate
+      - magic-wand
       - presentation
       - presenter
       - puzzle
@@ -928,9 +1126,10 @@ categories:
       - summit
       - target
       - target--area
-  - name: Supply Chain
+  - name: Supply chain
     members:
       - connected--nodes--to--the--cloud
+      - delivered
       - managing--contractual--flow
       - managing--items
       - monitored--item--on--conveyor
@@ -939,9 +1138,33 @@ categories:
       - movement--of--goods--02
       - movement--of--goods--03
       - movement--of--items
+      - moving-dolly
       - process
-  - name: Systems DevOps
+      - supply-chain--01
+      - supply-chain--02
+  - name: Sustainability
     members:
+      - energy--crisis
+      - esg-reporting--01
+      - esg-reporting--02
+      - green-it--01
+      - green-it--02
+      - sustainability--02
+      - sustainability--03
+      - sustainability--04
+      - sustainability--strategy
+  - name: Systems
+    members:
+      - cics--configuration-manager-for-z-os
+      - cics--deployment-assistant
+      - cics--explorer
+      - cics--interdependency-analyzer-for-z-os
+      - cics--performance-analyzer-for-z-os
+      - cics--transaction-gateway
+      - cics--transaction-server-for-z-os
+      - cics--tx
+      - cics--vsam-recovery-for-z-os
+      - cics--vsam-transparency-for-z-os
       - developer-z-os
       - systems-devops--analyze
       - systems-devops--build
@@ -968,6 +1191,7 @@ categories:
   - name: Transportation
     members:
       - airplane
+      - airport
       - automobile
       - bicycle
       - bus
@@ -976,9 +1200,11 @@ categories:
       - engine
       - fuel
       - luggage
+      - road
       - spaceship
       - steering--wheel
       - train
+      - tunnel
   - name: Watson
     members:
       - alchemy--data--news
@@ -1014,6 +1240,14 @@ categories:
       - visual--insights
       - visual--recognition
       - watson--logo
+      - watsonx--ai
+      - watsonx--assistant
+      - watsonx--code-assistant
+      - watsonx--code-assistant-for-z
+      - watsonx--code-assistant-for-z-refactor
+      - watsonx--data
+      - watsonx--governance
+      - watsonx
   - name: Weather
     members:
       - cloudy
@@ -1030,8 +1264,10 @@ categories:
       - humid
       - hurricane
       - lightning
+      - moon--full
       - night--clear
       - overcast
+      - raindrop
       - rainy
       - rainy--heavy
       - snow
@@ -1042,3 +1278,23 @@ categories:
       - tornado
       - weather
       - windy
+  - name: Workplace
+    members:
+      - bento-box-tray
+      - cardboard
+      - do-not-step
+      - fountain--drinking
+      - glass-bottle-and-metal-can
+      - library
+      - liquids
+      - literature
+      - lockers
+      - loop--hearing
+      - metal-can
+      - plastics
+      - silence
+      - station--hydration
+      - toilet
+      - trash--burnable
+      - trash--non-burnable
+      - waste--electronic

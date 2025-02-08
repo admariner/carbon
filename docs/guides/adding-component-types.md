@@ -37,7 +37,7 @@ By adding TypeScript types to components we anticipate a number of benefits:
 - Developer productivity will increase due to Component API's being
   self-documenting and providing tight integration with code editor
   intellisense.
-- The qualtiy of products developed will increase due to more stable, correct,
+- The quality of products developed will increase due to more stable, correct,
   and thorough component API typings provided first-party through
   `@carbon/react` itself.
 - Maintenance of the types themselves will be simplified by not having to go
@@ -92,8 +92,19 @@ the repository. There is an issue tracking curring status of this effort,
 - Change extension to `.tsx` via git (do not simply rename)
   - e.g.
     `git mv packages/react/src/components/ComponentName/ComponentName.js packages/react/src/components/ComponentName/ComponentName.tsx`
-- Copying the proptypes def to above the component definition
+- Copy the proptypes def to above the component definition
 - Retool the proptypes to be a ts interface
+- Look for any
+  [legacy types for the component, previously provided via DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/carbon-components-react/lib/components)
+  - Copy these legacy types over to your working file and use them as a starting
+    point.
+  - NOTE: If there are legacy types available, these were originally provided
+    for `carbon-components-react@v7.x` and may be out of date.
+  - Even still, it would be best to have as much parity as possible between
+    legacy types for `carbon-components-react@v7.x` and the new typings we're
+    providing for `@carbon/react@1.x`.
+  - After copying them over to your working file, ensure the legacy types don't
+    require any updates to match the current component proptypes specification.
 - Fix errors as they appear
 - Do not add types to internal components or functions that are not exported as
   part of the Public API.
@@ -148,5 +159,5 @@ the repository. There is an issue tracking curring status of this effort,
 ### Where should I put the ts interface in the file?
 
 - Above the component definition (likely the top of the file)
-  - The component implementation should be sandwiched inbetween the ts interface
-    and the proptypes definition
+  - The component implementation should be sandwiched in-between the ts
+    interface and the proptypes definition

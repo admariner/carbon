@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -21,20 +21,10 @@ export default {
 
 export const Default = () => <FormLabel>Form label</FormLabel>;
 
-export const WithTooltip = (controls) => {
+export const WithToggletip = (controls) => {
   const { align } = controls;
   return (
     <>
-      <div className="form-wrapper">
-        <FormLabel>Form label with Tooltip</FormLabel>
-        <Tooltip
-          align="bottom"
-          label="This can be used to provide more information about a field.">
-          <button className="cds--tooltip__trigger" type="button">
-            <Information />
-          </button>
-        </Tooltip>
-      </div>
       <div className="form-wrapper">
         <FormLabel>Form label with Toggletip</FormLabel>
         <Toggletip align={align}>
@@ -53,7 +43,8 @@ export const WithTooltip = (controls) => {
         inline
         className="notification"
         aria-label="Accessibility note on form labels"
-        actionButtonLabel="Accessibility button note on form labels">
+        actionButtonLabel="Accessibility button note on form labels"
+        title="Accessibility note">
         <p>
           <strong>Note:</strong>
           &nbsp; It is not recommended to include interactive items, such as

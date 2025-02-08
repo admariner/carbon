@@ -33,6 +33,11 @@ Array [
     "relativePath": "scss/layer",
   },
   Object {
+    "filepath": "scss/_layout.scss",
+    "importPath": "@carbon/styles/scss/layout",
+    "relativePath": "scss/layout",
+  },
+  Object {
     "filepath": "scss/_motion.scss",
     "importPath": "@carbon/styles/scss/motion",
     "relativePath": "scss/motion",
@@ -88,6 +93,16 @@ Array [
     "relativePath": "scss/components/accordion",
   },
   Object {
+    "filepath": "scss/components/ai-label/_ai-label.scss",
+    "importPath": "@carbon/styles/scss/components/ai-label/ai-label",
+    "relativePath": "scss/components/ai-label/ai-label",
+  },
+  Object {
+    "filepath": "scss/components/ai-label/_index.scss",
+    "importPath": "@carbon/styles/scss/components/ai-label",
+    "relativePath": "scss/components/ai-label",
+  },
+  Object {
     "filepath": "scss/components/aspect-ratio/_aspect-ratio.scss",
     "importPath": "@carbon/styles/scss/components/aspect-ratio/aspect-ratio",
     "relativePath": "scss/components/aspect-ratio/aspect-ratio",
@@ -123,6 +138,16 @@ Array [
     "relativePath": "scss/components/button/tokens",
   },
   Object {
+    "filepath": "scss/components/chat-button/_chat-button.scss",
+    "importPath": "@carbon/styles/scss/components/chat-button/chat-button",
+    "relativePath": "scss/components/chat-button/chat-button",
+  },
+  Object {
+    "filepath": "scss/components/chat-button/_index.scss",
+    "importPath": "@carbon/styles/scss/components/chat-button",
+    "relativePath": "scss/components/chat-button",
+  },
+  Object {
     "filepath": "scss/components/checkbox/_checkbox.scss",
     "importPath": "@carbon/styles/scss/components/checkbox/checkbox",
     "relativePath": "scss/components/checkbox/checkbox",
@@ -151,6 +176,16 @@ Array [
     "filepath": "scss/components/combo-box/_index.scss",
     "importPath": "@carbon/styles/scss/components/combo-box",
     "relativePath": "scss/components/combo-box",
+  },
+  Object {
+    "filepath": "scss/components/contained-list/_contained-list.scss",
+    "importPath": "@carbon/styles/scss/components/contained-list/contained-list",
+    "relativePath": "scss/components/contained-list/contained-list",
+  },
+  Object {
+    "filepath": "scss/components/contained-list/_index.scss",
+    "importPath": "@carbon/styles/scss/components/contained-list",
+    "relativePath": "scss/components/contained-list",
   },
   Object {
     "filepath": "scss/components/content-switcher/_content-switcher.scss",
@@ -373,6 +408,16 @@ Array [
     "relativePath": "scss/components/fluid-time-picker",
   },
   Object {
+    "filepath": "scss/components/icon-indicator/_icon-indicator.scss",
+    "importPath": "@carbon/styles/scss/components/icon-indicator/icon-indicator",
+    "relativePath": "scss/components/icon-indicator/icon-indicator",
+  },
+  Object {
+    "filepath": "scss/components/icon-indicator/_index.scss",
+    "importPath": "@carbon/styles/scss/components/icon-indicator",
+    "relativePath": "scss/components/icon-indicator",
+  },
+  Object {
     "filepath": "scss/components/inline-loading/_index.scss",
     "importPath": "@carbon/styles/scss/components/inline-loading",
     "relativePath": "scss/components/inline-loading",
@@ -593,6 +638,11 @@ Array [
     "relativePath": "scss/components/skeleton-styles/skeleton-styles",
   },
   Object {
+    "filepath": "scss/components/skeleton-styles/_ai-skeleton-styles.scss",
+    "importPath": "@carbon/styles/scss/components/skeleton-styles/ai-skeleton-styles",
+    "relativePath": "scss/components/skeleton-styles/ai-skeleton-styles",
+  },
+  Object {
     "filepath": "scss/components/slider/_index.scss",
     "importPath": "@carbon/styles/scss/components/slider",
     "relativePath": "scss/components/slider",
@@ -601,6 +651,16 @@ Array [
     "filepath": "scss/components/slider/_slider.scss",
     "importPath": "@carbon/styles/scss/components/slider/slider",
     "relativePath": "scss/components/slider/slider",
+  },
+  Object {
+    "filepath": "scss/components/slug/_index.scss",
+    "importPath": "@carbon/styles/scss/components/slug",
+    "relativePath": "scss/components/slug",
+  },
+  Object {
+    "filepath": "scss/components/slug/_slug.scss",
+    "importPath": "@carbon/styles/scss/components/slug/slug",
+    "relativePath": "scss/components/slug/slug",
   },
   Object {
     "filepath": "scss/components/stack/_index.scss",
@@ -868,6 +928,11 @@ Array [
     "relativePath": "scss/type/reset",
   },
   Object {
+    "filepath": "scss/utilities/_ai-gradient.scss",
+    "importPath": "@carbon/styles/scss/utilities/ai-gradient",
+    "relativePath": "scss/utilities/ai-gradient",
+  },
+  Object {
     "filepath": "scss/utilities/_box-shadow.scss",
     "importPath": "@carbon/styles/scss/utilities/box-shadow",
     "relativePath": "scss/utilities/box-shadow",
@@ -921,6 +986,11 @@ Array [
     "filepath": "scss/utilities/_keyframes.scss",
     "importPath": "@carbon/styles/scss/utilities/keyframes",
     "relativePath": "scss/utilities/keyframes",
+  },
+  Object {
+    "filepath": "scss/utilities/_layout.scss",
+    "importPath": "@carbon/styles/scss/utilities/layout",
+    "relativePath": "scss/utilities/layout",
   },
   Object {
     "filepath": "scss/utilities/_placeholder-colors.scss",

@@ -1,5 +1,5 @@
 /**
- * Copyright IBM Corp. 2016, 2018
+ * Copyright IBM Corp. 2016, 2023
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -19,6 +19,7 @@ import FluidTimePicker from '../FluidTimePicker';
 import FluidTimePickerSelect from '../FluidTimePickerSelect';
 import FluidNumberInput from '../FluidNumberInput';
 import ModalWrapper from '../ModalWrapper';
+import mdx from './FluidForm.mdx';
 
 const additionalProps = {
   className: 'some-class',
@@ -46,23 +47,28 @@ const InvalidPasswordProps = {
 };
 
 export default {
-  title: 'Experimental/FluidForm',
+  title: 'Experimental/Fluid Components/FluidForm',
   component: FluidForm,
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 };
 
 export const Default = () => (
   <>
-    <FluidForm {...additionalProps}>
+    <FluidForm aria-label="sample form" {...additionalProps}>
       <div style={{ display: 'flex' }}>
         <FluidTimePicker
           id="time-picker-1"
           labelText="Time"
           placeholder="hh:mm">
-          <FluidTimePickerSelect id="select-1" labelText="Clock">
+          <FluidTimePickerSelect id="select-01" labelText="Clock">
             <SelectItem value="am" text="AM" />
             <SelectItem value="pm" text="PM" />
           </FluidTimePickerSelect>
-          <FluidTimePickerSelect id="select-2" labelText="Timezone">
+          <FluidTimePickerSelect id="select-02" labelText="Timezone">
             <SelectItem value="et" text="Eastern Time (ET)" />
             <SelectItem value="ct" text="Central Time (CT)" />
             <SelectItem value="mt" text="Mountain Time (MT)" />
@@ -105,6 +111,7 @@ export const Default = () => (
         <FluidTextInput {...TextInputProps} />
         <FluidNumberInput
           label="Number Input Label"
+          labelText="Fluid Number Input"
           placeholder="Placeholder text"
           id="input-default"
           step={10}
